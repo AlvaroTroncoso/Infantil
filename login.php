@@ -19,14 +19,14 @@ $nr = mysqli_num_rows($query);
 
 if($nr == 1)
 {
-	header("Location: index.html");
+	header("Location: admin.php");
 	
 }
 else if ($nr == 0) 
 {
 	//header("Location: login.html");
 	//echo "No ingreso"; 
-	echo "<script> alert('Error');window.location= 'login.html' </script>";
+	echo "<script> alert('Ingrese los datos correctamente');window.location= 'login.html' </script>";
 }
 	
 

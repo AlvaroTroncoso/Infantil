@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>Estudia Conmigo</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/logo.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -20,7 +20,7 @@
         <!-- Menu-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="" alt="" /></a>
+                <a class="navbar-brand" href=""><img src="" alt="" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#letras">Letras</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#Numeros">Numeros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#Numeros">N&uacute;meros</a></li>
                         <li class="nav-item"><a class="nav-link" href="#Cuentos">Cuentos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
                         <li class="nav-item"><a class="nav-link" href="login.html">Config</a></li>
@@ -46,7 +46,19 @@
                 <a class="btn btn-primary btn-xl text-uppercase" href="#letras">Continuemos</a>
             </div>
         </header>
+      
+     
+
         <!-- Letras-->
+
+        <?php 
+        require("video.php");
+
+  $sqlVideo   = ("SELECT * FROM video ORDER BY id DESC LIMIT 1");
+  $queryVideo = mysqli_query($conn, $sqlVideo);
+  $totalVideo = mysqli_num_rows($queryVideo);
+  $DataVideo  = mysqli_fetch_array($queryVideo);
+?>
         <section class="page-section" id="letras">
             <div class="container">
                 <div class="text-center">
@@ -60,12 +72,18 @@
                     <br />
 
                     <div class="row text-center">
-                        <h2>La risa de las Vocales</h2>
-                        <br />
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/OHUktPPdTaM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        <br />
+                        <?php 
+                            if( $totalVideo >0){ ?>
+                            <h2><?php echo $DataVideo['titulo']; ?></h2>
 
-
-                    </div>
+                            <div class="video-responsive">
+                                <iframe width="560" height="315" src="<?php echo $DataVideo['url']; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                          
+                            </div>
+                        <?php }else{ ?>
+                            <h2>No hay Video</h2>
+                        <?php } ?>
+                    </div>                   
+              
                     <div class=" text-center">
                         <h2>Aprendamos m&aacute;s</h2>
                         <img class="img-fluid" src="assets/img/3.jpeg" alt="" />
@@ -94,7 +112,7 @@
         <section class="page-section bg-light" id="Numeros">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Numeros</h2>
+                    <h2 class="section-heading text-uppercase">N&uacute;meros</h2>
                     <h3 class="section-subheading text-muted">Contemos</h3>
                 </div>
                 <div class="row">
@@ -168,7 +186,7 @@
                                 <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
                             </a>
                             <div class="Numeros-caption">
-                                <div class="Numeros-caption-heading">Secuencia de Numeros</div>
+                                <div class="Numeros-caption-heading">Secuencia de N&uacute;meros</div>
 
                             </div>
                         </div>
@@ -409,7 +427,7 @@
                                 <div class="modal-body">
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Secuencia</h2>
-                                    <p class="item-intro text-muted">Numeros</p>
+                                    <p class="item-intro text-muted">N&uacute;meros</p>
                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/q1aqWMablqg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     <br />
                                     <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
